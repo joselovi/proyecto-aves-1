@@ -12,6 +12,7 @@ import { AveDetalleComponent } from './ave-detalle/ave-detalle.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AveSearchComponent } from './ave-search/ave-search.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AppRoutingModule } from './app-routing.module';
     AvesComponent,
     AveDetalleComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    AveSearchComponent
   ],
   imports: [
     BrowserModule,

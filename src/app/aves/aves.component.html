@@ -4,5 +4,20 @@
         <a routerLink="/detalle/{{ave.id}}">
             <span class="badge">{{ave.nombreComun}}</span> {{ave.nombreCientifico}}
         </a>
+        <button class="delete" title="delete ave" (click)="delete(ave)">x</button>
     </li>
 </ul>
+<br>
+<div>
+    <label>Nombre Común:
+      <input #aveNombreComun />
+    </label>
+    <label>Nombre Científico:
+        <input #aveNombreCientifico />
+      </label>
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button (click)="add(aveNombreComun.value, aveNombreCientifico.value); aveNombreComun.value=''; aveNombreCientifico.value=''">
+      add
+    </button>
+    <br>
+</div>
