@@ -1,0 +1,17 @@
+<div *ngIf="ave">
+
+    <h2>Detalles del ave: {{ave.nombreComun | uppercase}}</h2>
+
+    <div><span>id: </span>{{ave.id}}</div>
+    <div>
+        <label>Nombre:
+            <input [(ngModel)]="ave.nombreComun" placeholder="Nombre Común" >
+        </label>
+    </div>
+    <label>Nombre Científico:
+            <input [(ngModel)]="ave.nombreCientifico" placeholder="NombreCientífico" >
+        </label>
+    <br>
+    <button (click)="goBack()">Regresar</button>
+    <br>
+</div>

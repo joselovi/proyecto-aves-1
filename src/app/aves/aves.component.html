@@ -1,15 +1,8 @@
-<div class="container">
-    <br>
-    <br>
-    <!-- <div class="item">
-        <h2>Aves</h2>
-    </div>
-    <br>
-    <div class="resultado">
-        {{nombre_Comun}}
-    </div>
-    <br>
-    <div class="resultado">
-        {{nombre_Cientifico}}
-    </div> -->
-</div>
+<br>
+<ul class="aves">
+    <li *ngFor="let ave of aves">
+        <a routerLink="/detail/{{ave.id}}">
+            <span class="badge">{{ave.nombreComun}}</span> {{ave.nombreCientifico}}
+        </a>
+    </li>
+</ul>

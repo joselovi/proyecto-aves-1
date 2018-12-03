@@ -1,4 +1,4 @@
-import { Ave } from "./ave";
+import { Ave } from './ave';
 
 export const AVES: Ave[] = [
   { id: 1, nombreComun: 'Azulejo Palmero', nombreCientifico: 'Thraupis Palmarum' },

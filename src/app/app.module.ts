@@ -1,27 +1,39 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule }  from '@angular/platform-browser';
-
-import { AppComponent } from './app.component';
-import { ConsultaAvesComponent } from './consulta-aves/consulta-aves.component';
-import { AvesComponent } from './aves/aves.component';
-import { AvesService } from './shared/aves.service';
-import { ConsultaAvesService } from './shared/consulta-aves.service';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
+
+import { AppComponent } from './app.component';
+import { AvesComponent } from './aves/aves.component';
+import { AveDetalleComponent } from './ave-detalle/ave-detalle.component';
+import { MessagesComponent } from './messages/messages.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AppRoutingModule } from './app-routing.module';
+
 @NgModule({
-  imports: [
-    BrowserModule,
-    HttpClientModule
-  ],
   declarations: [
     AppComponent,
-    ConsultaAvesComponent,
-    AvesComponent
+    AvesComponent,
+    AveDetalleComponent,
+    MessagesComponent,
+    DashboardComponent
   ],
-  providers: [
-    AvesService,
-    ConsultaAvesService
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
+    // and returns simulated server responses.
+    // Remove it when a real server is ready to receive requests.
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    )
   ],
-  bootstrap: [ AppComponent ]
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
