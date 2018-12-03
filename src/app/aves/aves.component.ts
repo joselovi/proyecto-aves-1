@@ -18,6 +18,20 @@ export class AvesComponent implements OnInit {
 
   getAves(): void {
     this.aveService.getAves()
-        .subscribe(aves => this.aves = aves);
+    .subscribe(aves => this.aves = aves);
+  }
+
+  add(nombreComun: string, nombreCientifico: string): void {
+    nombreComun = nombreComun.trim();
+    if (!nombreComun || !nombreCientifico) { return; }
+    this.aveService.addAve({ nombreComun } as Ave)
+      .subscribe(ave => {
+        this.aves.push(ave);
+      });
+  }
+
+  delete(ave: Ave): void {
+    this.aves = this.aves.filter(h => h !== ave);
+    this.aveService.deleteAve(ave).subscribe();
   }
 }

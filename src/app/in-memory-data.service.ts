@@ -22,11 +22,11 @@ export class InMemoryDataService implements InMemoryDbService {
     return {aves};
   }
 
-  // Overrides the genId method to ensure that a hero always has an id.
-  // If the heroes array is empty,
+  // Overrides the genId method to ensure that a ave always has an id.
+  // If the aves array is empty,
   // the method below returns the initial number (11).
-  // if the heroes array is not empty, the method below returns the highest
-  // hero id + 1.
+  // if the aves array is not empty, the method below returns the highest
+  // ave id + 1.
   genId(aves: Ave[]): number {
     return aves.length > 0 ? Math.max(...aves.map(ave => ave.id)) + 1 : 11;
   }

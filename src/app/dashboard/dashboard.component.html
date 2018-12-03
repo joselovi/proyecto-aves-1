@@ -1,8 +1,10 @@
 <h3>Top Aves</h3>
 <div class="grid grid-pad">
     <a *ngFor="let ave of aves" class="col-1-4" routerLink="/detalle/{{ave.id}}">
-        <div class="module hero">
+        <div class="module ave">
             <h4>{{ave.nombreComun}}</h4>
         </div>
     </a>
 </div>
+<br>
+<app-ave-search></app-ave-search>
