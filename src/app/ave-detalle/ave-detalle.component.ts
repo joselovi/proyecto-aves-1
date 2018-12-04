@@ -32,4 +32,9 @@ export class AveDetalleComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+
+  save(): void {
+    this.aveService.updateAve(this.ave)
+      .subscribe(() => this.goBack());
+  }
 }
