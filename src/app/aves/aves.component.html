@@ -1,23 +1,54 @@
 <br>
-<ul class="aves">
-    <li *ngFor="let ave of aves">
-        <a routerLink="/detalle/{{ave.id}}">
-            <span class="badge">{{ave.nombreComun}}</span> {{ave.nombreCientifico}}
-        </a>
-        <button class="delete" title="delete ave" (click)="delete(ave)">x</button>
-    </li>
-</ul>
 <br>
 <div>
-    <label>Nombre Común:
-      <input #aveNombreComun />
-    </label>
-    <label>Nombre Científico:
-        <input #aveNombreCientifico />
-      </label>
-    <!-- (click) passes input value to add() and then clears the input -->
-    <button (click)="add(aveNombreComun.value, aveNombreCientifico.value); aveNombreComun.value=''; aveNombreCientifico.value=''">
-      Agregar
-    </button>
+    <table class="table color-table info-table">
+        <tr>
+            <td>
+                <label>Nombre Común:</label>
+            </td>
+            <td>
+                <input #aveNombreComun />
+            </td>
+        </tr>
+        <br>
+        <tr>
+            <td>
+                <label>Nombre Científico:</label>
+            </td>
+            <td>
+                <input #aveNombreCientifico />
+            </td>
+        </tr>
+        <br>
+        <tr>
+            <td rowspan="2">
+                <!-- (click) passes input value to add() and then clears the input -->
+                <button class="btn btn-success waves-effect waves-light" (click)="add(aveNombreComun.value, aveNombreCientifico.value); aveNombreComun.value=''; aveNombreCientifico.value=''">
+                    Agregar
+                </button>
+            </td>
+        </tr>
+    </table>
     <br>
 </div>
+<br>
+<ul class="aves">
+    <table class="table">
+        <li *ngFor="let ave of aves">
+            <tr>
+                <a routerLink="/detalle/{{ave.id}}">
+                    <td>
+                        <span>{{ave.nombreComun}}</span>
+                    </td>
+                    <td>
+                        {{ave.nombreCientifico}}
+                    </td>
+                </a>
+                <td>
+                    <button class="btn btn-danger" title="delete ave" (click)="delete(ave)">x</button>
+                </td>
+            </tr>
+        </li>
+    </table>
+</ul>
+<br>
