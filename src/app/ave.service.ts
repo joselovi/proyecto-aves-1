@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Ave } from './ave';
-// import { AVES } from './mock-aves';
+
 import { MessageService } from './message.service';
 
 const httpOptions = {
@@ -16,13 +16,11 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AveService {
-  
   private avesUrl = 'api/aves';  // URL to web api
 
   constructor(
     private http: HttpClient,
     private messageService: MessageService) { }
-  
   /** GET aves from the server */
   getAves(): Observable<Ave[]> {
     return this.http.get<Ave[]>(this.avesUrl)
@@ -31,7 +29,6 @@ export class AveService {
         catchError(this.handleError('getAves', []))
       );
   }
-  
   /** GET ave by id. Return `undefined` when id not found */
   getAveNo404<Data>(id: number): Observable<Ave> {
     const url = `${this.avesUrl}/?id=${id}`;
@@ -45,12 +42,8 @@ export class AveService {
         catchError(this.handleError<Ave>(`getAve id=${id}`))
       );
   }
-  
   /** GET ave by id. Will 404 if id not found */
   getAve(id: number): Observable<Ave> {
-    // // TODO: send the message _after_ fetching the aves
-    // this.messageService.add(`AveService: fetched ave id=${id}`);
-    // return of(AVES.find(ave => ave.id === id));
     const url = `${this.avesUrl}/${id}`;
     return this.http.get<Ave>(url).pipe(
       tap(_ => this.log(`fetched ave id=${id}`)),
@@ -69,7 +62,6 @@ export class AveService {
       catchError(this.handleError<Ave[]>('searchAves', []))
     );
   }
-  
    //////// Save methods //////////
 
   /** POST: add a new ave to the server */
@@ -90,12 +82,11 @@ export class AveService {
     catchError(this.handleError<Ave>('deleteAve'))
   );
 }
-  
   /** PUT: update the ave on the server */
   updateAve (ave: Ave): Observable<any> {
     return this.http.put(this.avesUrl, ave, httpOptions).pipe(
-    tap(_ => this.log(`updated ave id=${ave.id}`)),
-    catchError(this.handleError<any>('updateAve'))
+      tap(_ => this.log(`updated ave id=${ave.id}`)),
+      catchError(this.handleError<any>('updateAve'))
     );
   }
 
@@ -107,13 +98,13 @@ export class AveService {
    */
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
- 
+
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
- 
+
       // TODO: better job of transforming error for user consumption
       this.log(`${operation} failed: ${error.message}`);
- 
+
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };

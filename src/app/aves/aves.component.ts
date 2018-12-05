@@ -23,8 +23,9 @@ export class AvesComponent implements OnInit {
 
   add(nombreComun: string, nombreCientifico: string): void {
     nombreComun = nombreComun.trim();
-    if (!nombreComun || !nombreCientifico) { return; }
-    this.aveService.addAve({ nombreComun } as Ave)
+    nombreCientifico = nombreCientifico.trim();
+    if (!nombreComun && !nombreCientifico) { return; }
+    this.aveService.addAve({ nombreComun, nombreCientifico } as Ave)
       .subscribe(ave => {
         this.aves.push(ave);
       });
